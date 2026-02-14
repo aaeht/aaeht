@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All About EHT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-dark: #1b120f;
+        --bg-panel: #2b1b16;
+        --bg-panel-soft: #3a251e;
+        --text-main: #f9e9cf;
+        --text-sub: #d1b38d;
+        --accent: #d38b51;
+        --google-text: #222;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(211, 139, 81, 0.12), transparent 40%),
+          radial-gradient(circle at 80% 80%, rgba(118, 74, 48, 0.25), transparent 45%),
+          linear-gradient(160deg, #120b09, var(--bg-dark));
+        color: var(--text-main);
+        font-family: 'Press Start 2P', system-ui, sans-serif;
+        padding: 24px;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .card {
+        width: min(560px, 100%);
+        margin: 0 auto;
+        border: 3px solid #6e4838;
+        border-radius: 14px;
+        background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-panel-soft) 100%);
+        box-shadow:
+          0 0 0 4px #1a100d,
+          0 16px 40px rgba(0, 0, 0, 0.5);
+        padding: 40px 28px;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+        line-height: 1.5;
+        text-shadow: 0 0 8px rgba(211, 139, 81, 0.35);
+      }
+
+      .subtitle {
+        margin-top: 18px;
+        margin-bottom: 28px;
+        font-size: 0.68rem;
+        line-height: 1.8;
+        color: var(--text-sub);
+      }
+
+      .google-btn {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        background: #fff;
+        color: var(--google-text);
+        padding: 14px 16px;
+        font: inherit;
+        font-size: 0.65rem;
+        cursor: pointer;
+      }
+
+      .google-logo {
+        width: 18px;
+        height: 18px;
+      }
+
+      #status {
+        margin-top: 20px;
+        min-height: 1.6em;
+        font-size: 0.58rem;
+        color: var(--accent);
+        line-height: 1.6;
+      }
+
+      .config-hint {
+        margin-top: 24px;
+        font-size: 0.54rem;
+        line-height: 1.8;
+        color: #c79f7a;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid #6a4332;
+        border-radius: 8px;
+        padding: 12px;
+      }
+
+      .app-shell {
+        width: min(980px, 100%);
+        margin: 0 auto;
+        border: 3px solid #6e4838;
+        border-radius: 14px;
+        background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-panel-soft) 100%);
+        box-shadow:
+          0 0 0 4px #1a100d,
+          0 16px 40px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border-bottom: 2px solid #6a4332;
+        padding: 16px;
+      }
+
+      .menu-btn {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #8f613f;
+        background: #2c1b14;
+        color: var(--text-main);
+        border-radius: 8px;
+        font: inherit;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
+
+      .app-title {
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      .app-body {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        min-height: 420px;
+      }
+
+      .tabs {
+        border-right: 2px solid #6a4332;
+        padding: 14px;
+        display: grid;
+        align-content: start;
+        gap: 10px;
+      }
+
+      .tab-btn {
+        border: 2px solid #7c5137;
+        background: #3a241c;
+        color: var(--text-main);
+        border-radius: 8px;
+        font: inherit;
+        font-size: 0.55rem;
+        padding: 10px 8px;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .tab-btn.active {
+        border-color: var(--accent);
+        background: #4a2e22;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .panel-title {
+        margin: 0 0 18px;
+        font-size: 0.7rem;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 12px;
+        max-width: 480px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-size: 0.55rem;
+        color: var(--text-sub);
+      }
+
+      input {
+        border: 2px solid #7c5137;
+        background: #1f1411;
+        color: var(--text-main);
+        border-radius: 8px;
+        padding: 10px;
+        font-family: inherit;
+        font-size: 0.55rem;
+      }
+
+      .placeholder {
+        font-size: 0.55rem;
+        color: var(--text-sub);
+        line-height: 1.7;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.52rem;
+      }
+
+      @media (max-width: 760px) {
+        .app-body {
+          grid-template-columns: 1fr;
+        }
+
+        .tabs {
+          border-right: 0;
+          border-bottom: 2px solid #6a4332;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .tab-btn {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="loginView" class="card">
+      <h1>All About EHT</h1>
+      <p class="subtitle">이블헌터타이쿤 유저를 위한 정보와 계산기 사이트</p>
+
+      <button id="googleLoginBtn" class="google-btn" type="button">
+        <svg class="google-logo" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.2.8 3.9 1.5l2.7-2.6C16.8 3.1 14.6 2 12 2 6.5 2 2 6.5 2 12s4.5 10 10 10c5.8 0 9.6-4.1 9.6-9.8 0-.7-.1-1.3-.2-2H12z"/>
+        </svg>
+        Google로 로그인
+      </button>
+
+      <p id="status"></p>
+
+      <div class="config-hint">
+        Supabase 연결 전에는 <code>config.js</code>의
+        <code>SUPABASE_URL</code>, <code>SUPABASE_ANON_KEY</code> 값을 먼저 입력하세요.
+      </div>
+    </main>
+
+    <section id="appView" class="app-shell hidden" aria-label="로그인 후 화면">
+      <header class="app-header">
+        <button class="menu-btn" type="button" aria-label="메뉴 버튼">☰</button>
+        <h2 class="app-title">aaeht</h2>
+      </header>
+
+      <div class="app-body">
+        <nav class="tabs" aria-label="탭 메뉴">
+          <button type="button" class="tab-btn active" data-tab="home">홈</button>
+          <button type="button" class="tab-btn" data-tab="hunter">헌터</button>
+          <button type="button" class="tab-btn" data-tab="info">정보</button>
+        </nav>
+
+        <main class="panel">
+          <section id="tab-home" class="tab-panel">
+            <h3 class="panel-title">홈</h3>
+            <div class="form-grid">
+              <label>
+                촌장 이름
+                <input type="text" id="villageChiefName" placeholder="촌장 이름 입력" />
+              </label>
+              <label>
+                길드명
+                <input type="text" id="guildName" placeholder="길드명 입력" />
+              </label>
+              <label>
+                고유코드
+                <input type="text" id="uniqueCode" placeholder="고유코드 입력" />
+              </label>
+            </div>
+          </section>
+
+          <section id="tab-hunter" class="tab-panel hidden">
+            <h3 class="panel-title">헌터</h3>
+            <p class="placeholder">요청하신 다음 내용을 받으면 이 탭을 이어서 개발하겠습니다.</p>
+          </section>
+
+          <section id="tab-info" class="tab-panel hidden">
+            <h3 class="panel-title">정보</h3>
+            <p class="placeholder">요청하신 다음 내용을 받으면 이 탭을 이어서 개발하겠습니다.</p>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <script src="./config.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
